@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const db = require("./models");
+const db = require("./models/Workout");
 
 const app = express();
 
@@ -15,18 +15,33 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
-db.User.create({ name: "Example User" })
-    .then(dbUser => {
-        console.log(dbUser);
-    })
-    .catch(({ message }) => {
-        console.log(message);
-    });
 
-app.get("/workouts", (req, res) => {
-    db.Workout.find({})
+// HTML routes
+
+const path = require("path");
+
+
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+app.get("/stats", function (req, res) {
+    res.sendFile(path.join(__dirname, "./public/stats.html"));
+});
+
+app.get("/exercise", function (req, res) {
+    res.sendFile(path.join(__dirname, "./public/exercise.html"));
+});
+
+
+
+// API routes
+
+
+app.get("/api/workouts", (req, res) => {
+    db.find({})
         .then(dbWorkouts => {
             res.json(dbWorkouts);
         })
@@ -35,37 +50,40 @@ app.get("/workouts", (req, res) => {
         });
 });
 
-app.get("/user", (req, res) => {
-    db.User.find({})
-        .then(dbUser => {
-            res.json(dbUser);
+
+// app.get("/exercise", (req, res) => {
+//     db.find({})
+//         .then(dbWorkouts => {
+//             res.json(dbWorkouts);
+//         })
+//         .catch(err => {
+//             res.json(err);
+//         });
+// });
+
+
+
+app.post("/api/workouts", ({ body }, res) => {
+    db.create(body)
+        .then(({ _id }) => db.findOneAndUpdate({}, { $push: { workouts: _id } }, { new: true }))
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
         })
         .catch(err => {
             res.json(err);
         });
 });
 
-app.post("/submit", ({ body }, res) => {
-    db.Workout.create(body)
-        .then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { notes: _id } }, { new: true }))
-        .then(dbUser => {
-            res.json(dbUser);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-});
-
-app.get("/populateduser", (req, res) => {
-    db.User.find({})
-        .populate("notes")
-        .then(dbUser => {
-            res.json(dbUser);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-});
+// app.get("/populateduser", (req, res) => {
+//     db.User.find({})
+//         .populate("notes")
+//         .then(dbUser => {
+//             res.json(dbUser);
+//         })
+//         .catch(err => {
+//             res.json(err);
+//         });
+// });
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
