@@ -1,10 +1,11 @@
 # Fitness Tracker
 A workout and exercise tracking web application exemplifying mongo db and mongoose.
 
-
-![screenshot](https://github.com/jasonstevens13/fitness-tracker/blob/master/assets/images/screenshot1.jpg)
-
 ![screenshot](https://github.com/jasonstevens13/fitness-tracker/blob/master/public/assets/images/screenshot1.JPG)
+
+![screenshot](https://github.com/jasonstevens13/fitness-tracker/blob/master/public/assets/images/screenshot2.JPG)
+
+![screenshot](https://github.com/jasonstevens13/fitness-tracker/blob/master/public/assets/images/screenshot3.JPG)
 
 
 
