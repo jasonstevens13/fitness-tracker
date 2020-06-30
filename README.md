@@ -2,7 +2,10 @@
 A workout and exercise tracking web application exemplifying mongo db and mongoose.
 
 
-![screenshot](https://github.com/jasonstevens13/employee-management-system/blob/master/assets/pic.jpg)
+![screenshot](https://github.com/jasonstevens13/fitness-tracker/blob/master/assets/images/screenshot1.jpg)
+
+![screenshot](https://github.com/jasonstevens13/fitness-tracker/blob/master/public/assets/images/screenshot1.JPG)
+
 
 
 ## Table of Contents
@@ -16,24 +19,26 @@ A workout and exercise tracking web application exemplifying mongo db and mongoo
   
   
 ## Description
-  A node.js application that communicates with a SQL database, serving as a Content Management System. The use of which stores a company's workforce data. The database houses 3 tables - an employee table; a department table; and a role table. The user of this application may read and write to these tables in order to bring structure and uniformity to the company's employee management. 
+  A node.js application that links with an mLab database (mongo and use of mongoose npm). The app allows the user to store workouts and subsequent exercises for monitoring of goals. 
 
-  Future enhancements will include more functionality, such as delete functions and cleaner approaches to the same code.
+  Future enhancements: N/A.
+
+  Libraries/Technologies: JavaScript; Node.js; Express.js; MongoDB; Mongoose; Morgan; Heroku deploy (with Mlab instance of Mongo).
   
 ## Installation
-  The app is available by way of this GitHub repo (copy and save to your own machine). NPM Installs - The app itself requires some npms: console.table; inquirer; mysql; and dotenv is you choose. 
+  The app is available for use online. To install, use this GitHub repo (copy and save to your own machine, requiring above technologies).
   
 ## Usage
-  The app demonstrates a real-world solution for a bare-bones employee management system. One could build from this application and furthermore create a user interface.
+  The app demonstrates a dynamic, real-world solution for a workout/exercise tracking; however; the project's intent is to exemplify successful use of mongo and mongoose.
 
 ## License 
   ![MIT License](https://img.shields.io/badge/License-MIT-green)
   
 ## Contributing
-  Contributions/ideas are welcomed; email me.
+  N/A.
   
 ## Tests 
-  Tests have note yet been written; however, the intent is to add tests that the developer may run. This will of course validate that the application will continue to perform as expected. When put in place, the tests will be ran via an 'npm run test' command.
+  N/A
   
 ## Questions
   ![Ask Me Anything!](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)
